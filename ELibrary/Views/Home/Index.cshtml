@@ -13,29 +13,24 @@
         <form asp-action="Index">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserNameSingUp" class="control-label"></label>
-                <input asp-for="UserNameSingUp" class="form-control" />
-                <span asp-validation-for="UserNameSingUp" class="text-danger"></span>
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PasswordSingUp" class="control-label"></label>
-                <input asp-for="PasswordSingUp" class="form-control" />
-                <span asp-validation-for="PasswordSingUp" class="text-danger"></span>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EmailSingUp" class="control-label"></label>
-                <input asp-for="EmailSingUp" class="form-control" />
-                <span asp-validation-for="EmailSingUp" class="text-danger"></span>
+                <label asp-for="ConfrimPassword" class="control-label"></label>
+                <input asp-for="ConfrimPassword" class="form-control" />
+                <span asp-validation-for="ConfrimPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TypeSingUp" class="control-label"></label>
-                <input asp-for="TypeSingUp" class="form-control" />
-                <span asp-validation-for="TypeSingUp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AvatarSingUp" class="control-label"></label>
-                <input asp-for="AvatarSingUp" class="form-control" />
-                <span asp-validation-for="AvatarSingUp" class="text-danger"></span>
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

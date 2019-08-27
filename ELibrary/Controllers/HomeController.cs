@@ -22,8 +22,9 @@ namespace ELibrary.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string UserName, string Password, string Email, string Type, string Avatar)
+        public IActionResult Index(string UserName, string Password, string Email)
         {
+            string Type = "user", Avatar = "";
             this.service.SingUp(UserName,  Password,  Email,  Type,  Avatar);
             return this.RedirectToAction("Index", "Home");
         }

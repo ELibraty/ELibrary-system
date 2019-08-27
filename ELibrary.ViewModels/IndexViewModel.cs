@@ -1,19 +1,25 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ELibrary.ViewModels
 {
-    public class IndexViewModel
+    public class IndexViewModel 
     {
         //SingUp
-        public string UserNameSingUp { get; set; }
+        [Required(ErrorMessage ="Моля въведете потребителско име!")]
+        public string UserName { get; set; }
 
-        public string PasswordSingUp { get; set; }
+        [Required(ErrorMessage = "Моля въведете парола!")]
+        [DataType(DataType.Password, ErrorMessage = "Моля въведете парола!")]
+        public string Password { get; set; }
 
-        public string EmailSingUp { get; set; }
+        [Required(ErrorMessage = "Моля повторете парола!")]
+        [DataType(DataType.Password, ErrorMessage = "Моля повторете парола!")]
+        public string ConfrimPassword { get; set; }
 
-        public string TypeSingUp { get; set; }
-
-        public string AvatarSingUp { get; set; }
+        [Required(ErrorMessage = "Моля въведете потребителско име!")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Моля въведете валиден e-mail адрес!")]
+        public string Email { get; set; }
 
 
         //Sing In
