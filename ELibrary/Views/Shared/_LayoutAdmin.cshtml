@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ELibrary</title>
     <link rel="stylesheet" href="~/AllStyle.css" />
-    <link rel="icon" href="~/images/core-img/favicon.ico">
+    <link rel="icon" href="~/css/images/core-img/favicon.ico">
 
-    <environment include="Development">
+    <!-- <environment include="Development">
          <link rel="stylesheet" href="~/css_ORG/site.css" />
          <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
      </environment>
@@ -17,7 +17,7 @@
                asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
                asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
          <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-     </environment>
+     </environment>-->
 </head>
 <body>
     <!-- Preloader -->
@@ -28,6 +28,31 @@
     </div>
     <!-- ***** Header Area Start ***** -->
     <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <!-- Top Content -->
+                    <div class="col-6 col-md-9 col-lg-8">
+                        <div class="top-header-content">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="28 Jackson Street, Chicago, 7788569 USA"><i class="fa fa-map-marker"></i> <span>28 Jackson Street, Chicago, 7788569 USA</span></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="info.dento@gmail.com"><i class="fa fa-envelope"></i> <span>info.dento@gmail.com</span></a>
+                        </div>
+                    </div>
+                    <!-- Top Header Social Info -->
+                    <div class="col-6 col-md-3 col-lg-4">
+                        <div class="top-header-social-info text-right">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Header End -->
         <!-- Main Header Start -->
         <div class="main-header-area">
             <div class="classy-nav-container breakpoint-off">
@@ -49,7 +74,19 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Начало</a></li>
+                                    <li><a asp-area="" asp-controller="Home" asp-action="IndexORG">Home</a></li>
+
+                                    <li><a href="index.html">Home</a></li>
+                                    <li>
+                                        <a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">- Home</a></li>
+                                            <li><a href="about.html">- About Us</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="service.html">Service</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -61,6 +98,26 @@
             </div>
         </div>
     </header>
+    <!-- ***** Header Area End ***** -->
+    <!--<nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container">
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ELibrary</a>
+             </div>
+             <div class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                 </ul>
+             </div>
+         </div>
+     </nav>-->
 
     <partial name="_CookieConsentPartial" />
 

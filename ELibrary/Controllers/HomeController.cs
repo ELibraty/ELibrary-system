@@ -9,7 +9,7 @@ namespace ELibrary.Controllers
 {
     public class HomeController:Controller
     {
-        private IIndexService service;
+        private readonly IIndexService service;
 
         public HomeController(IIndexService service)
         {
@@ -18,7 +18,7 @@ namespace ELibrary.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index","_Layout");
         }
 
         [HttpPost]
