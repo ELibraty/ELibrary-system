@@ -1,0 +1,69 @@
+﻿@model ELibrary.ViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserNameSingUp" class="control-label"></label>
+                <input asp-for="UserNameSingUp" class="form-control" />
+                <span asp-validation-for="UserNameSingUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordSingUp" class="control-label"></label>
+                <input asp-for="PasswordSingUp" class="form-control" />
+                <span asp-validation-for="PasswordSingUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailSingUp" class="control-label"></label>
+                <input asp-for="EmailSingUp" class="form-control" />
+                <span asp-validation-for="EmailSingUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeSingUp" class="control-label"></label>
+                <input asp-for="TypeSingUp" class="form-control" />
+                <span asp-validation-for="TypeSingUp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvatarSingUp" class="control-label"></label>
+                <input asp-for="AvatarSingUp" class="form-control" />
+                <span asp-validation-for="AvatarSingUp" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="SingUp" class="btn btn-default" />
+            </div>
+        </form>
+
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="PasswordSingIn" class="control-label"></label>
+                <input asp-for="PasswordSingIn" class="form-control" />
+                <span asp-validation-for="PasswordSingIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailSingIn" class="control-label"></label>
+                <input asp-for="EmailSingIn" class="form-control" />
+                <span asp-validation-for="EmailSingIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="SingIn" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
