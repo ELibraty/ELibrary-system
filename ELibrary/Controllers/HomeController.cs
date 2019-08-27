@@ -18,7 +18,7 @@ namespace ELibrary.Controllers
 
         public IActionResult Index()
         {
-            return View("Index","_Layout");
+            return View();
         }
 
         [HttpPost]
