@@ -17,8 +17,8 @@ namespace ELibrary.ViewModels
 
 
         //Sing In
-        public string PasswordSingIn { get; set; }
+        //public string PasswordSingIn { get; set; }
 
-        public string EmailSingIn { get; set; }
+        //public string EmailSingIn { get; set; }
     }
 }

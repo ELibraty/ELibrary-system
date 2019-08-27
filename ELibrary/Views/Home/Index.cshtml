@@ -4,6 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
+<h2>Index</h2>
+
+<h4>IndexViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -34,27 +37,8 @@
                 <input asp-for="AvatarSingUp" class="form-control" />
                 <span asp-validation-for="AvatarSingUp" class="text-danger"></span>
             </div>
-           
             <div class="form-group">
-                <input type="submit" value="SingUp" class="btn btn-default" />
-            </div>
-        </form>
-
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="PasswordSingIn" class="control-label"></label>
-                <input asp-for="PasswordSingIn" class="form-control" />
-                <span asp-validation-for="PasswordSingIn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailSingIn" class="control-label"></label>
-                <input asp-for="EmailSingIn" class="form-control" />
-                <span asp-validation-for="EmailSingIn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="SingIn" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>

@@ -32,11 +32,11 @@ namespace ELibrary.Services
             return user.Id;
         }
 
-        public bool SingIn(string Email, string Password)
+       /* public bool SingIn(string Email, string Password)
         {
             var user = this.context.Users.FirstOrDefault(x => x.Email == Email && x.Password == Password);
             if (user != null) return true;
             else return false;
-        }
+        }*/
     }
 }

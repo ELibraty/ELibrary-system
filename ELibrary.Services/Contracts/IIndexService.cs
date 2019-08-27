@@ -8,7 +8,7 @@ namespace ELibrary.Services.Contracts
     {
         int SingUp(string UserName, string Password, string Email, string Type, string Avatar);
 
-        bool SingIn(string Password, string Email);
+//        bool SingIn(string Password, string Email);
 
     }
 }
