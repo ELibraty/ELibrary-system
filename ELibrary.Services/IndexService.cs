@@ -15,15 +15,15 @@ namespace ELibrary.Services
             this.context = context;
         }
 
-        public int SingUp(string UserName, string Password, string Email, string Type, string Avatar)
+        public int SingUp(string userName, string password, string email, string type, string avatar)
         {
             var user = new User()
             {
-                UserName = UserName,
-                Password = Password,
-                Email = Email,
-                Type = Type,
-                Avatar = Avatar
+                UserName = userName,
+                Password = password,
+                Email = email,
+                Type = type,
+                Avatar = avatar
             };
 
             context.Users.Add(user);

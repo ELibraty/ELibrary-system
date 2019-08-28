@@ -4,44 +4,99 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<section class="welcome-area">
+    <!-- Welcome Slides -->
+    <div class="welcome-slides owl-carousel">
+        <!-- Single Welcome Slide -->
+        <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url('~/images/bg-img/1.jpg');">
 
-<h4>IndexViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <!-- Welcome Text -->
+                        <div class="welcome-text text-center">
+                            <h2 data-animation="fadeInUp" data-delay="100ms">We Believe Everyone Should Have Easy Access To Great Dental Care</h2>
+                            <p data-animation="fadeInUp" data-delay="300ms">
+                                Вселената - някои я наричат Библиотеката. - Хорхе Луис Борхес
+                            </p>
+                            <div class="welcome-btn-group">
+                                <button type="button" class="btn dento-btn mx-2" data-toggle="modal" data-target="#registrationModal">
+                                    Регистрация
+                                </button>
+
+                                <button type="button" class="btn dento-btn mx-2" data-toggle="modal" data-target="#loginModal">
+                                    Вход
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfrimPassword" class="control-label"></label>
-                <input asp-for="ConfrimPassword" class="form-control" />
-                <span asp-validation-for="ConfrimPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
+<!-- ***** Welcome Area End ***** -->
+<form action="#" method="post">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="container">
+
+
+        <!-- ***** Welcome Area Start ***** -->
+
+        <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModal-label">Регистриране</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span asp-validation-for="UserName" class="text-danger row"></span>
+                                <span asp-validation-for="Password" class="text-danger row"></span>
+                                <span asp-validation-for="ConfrimPassword" class="text-danger row"></span>
+                                <span asp-validation-for="Email" class="text-danger row"></span>
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group row">
+                                    <label asp-for="UserName" class="control-label col-md-4">Потребителко име</label>
+                                    <input asp-for="UserName" class="form-control col-md-7" />
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="Password" class="control-label col-md-4">Парола</label>
+                                    <input asp-for="Password" class="form-control col-md-7" />
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="ConfrimPassword" class="control-label col-md-4">Потвърди парола</label>
+                                    <input asp-for="ConfrimPassword" class="form-control col-md-7" />
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="Email" class="control-label col-md-4">Email адрес</label>
+                                    <input asp-for="Email" class="form-control col-md-7" />
+                                </div>
+                                <div class="form-group ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Регистрирай се" class="btn dento-btn booking-btn" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
