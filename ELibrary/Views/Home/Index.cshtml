@@ -36,7 +36,6 @@
     </div>
 </section>
 <!-- ***** Welcome Area End ***** -->
-<form action="#" method="post">
 
     <div class="container">
 
@@ -51,51 +50,50 @@
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
+                    <form action="#" method="post">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span asp-validation-for="UserName" class="text-danger row"></span>
+                                    <span asp-validation-for="Password" class="text-danger row"></span>
+                                    <span asp-validation-for="ConfrimPassword" class="text-danger row"></span>
+                                    <span asp-validation-for="Email" class="text-danger row"></span>
 
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span asp-validation-for="UserName" class="text-danger row"></span>
-                                <span asp-validation-for="Password" class="text-danger row"></span>
-                                <span asp-validation-for="ConfrimPassword" class="text-danger row"></span>
-                                <span asp-validation-for="Email" class="text-danger row"></span>
+                                </div>
 
                             </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group row">
-                                    <label asp-for="UserName" class="control-label col-md-4">Потребителко име</label>
-                                    <input asp-for="UserName" class="form-control col-md-7" />
-                                </div>
-                                <div class="form-group row">
-                                    <label asp-for="Password" class="control-label col-md-4">Парола</label>
-                                    <input asp-for="Password" class="form-control col-md-7" />
-                                </div>
-                                <div class="form-group row">
-                                    <label asp-for="ConfrimPassword" class="control-label col-md-4">Потвърди парола</label>
-                                    <input asp-for="ConfrimPassword" class="form-control col-md-7" />
-                                </div>
-                                <div class="form-group row">
-                                    <label asp-for="Email" class="control-label col-md-4">Email адрес</label>
-                                    <input asp-for="Email" class="form-control col-md-7" />
-                                </div>
-                                <div class="form-group ">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group row">
+                                        <label asp-for="UserName" class="control-label col-md-4">Потребителко име</label>
+                                        <input asp-for="UserName" class="form-control col-md-7" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Password" class="control-label col-md-4">Парола</label>
+                                        <input asp-for="Password" class="form-control col-md-7" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="ConfrimPassword" class="control-label col-md-4">Потвърди парола</label>
+                                        <input asp-for="ConfrimPassword" class="form-control col-md-7" />
+                                    </div>
+                                    <div class="form-group row">
+                                        <label asp-for="Email" class="control-label col-md-4">Email адрес</label>
+                                        <input asp-for="Email" class="form-control col-md-7" />
+                                    </div>
+                                    <div class="form-group ">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" value="Регистрирай се" class="btn dento-btn booking-btn" />
-                    </div>
-
+                        <div class="modal-footer">
+                            <input type="submit" value="Регистрирай се" class="btn dento-btn booking-btn" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</form>
 
 
 @section Scripts {
