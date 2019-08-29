@@ -11,11 +11,12 @@ namespace ELibrary.Data.Models
 
         public int UserId { get; set; }
 
-        public ICollection<User> Users { get; set; }
-
+        public User Users { get; set; }
 
         public string NameLibrary { get; set; }
 
         public string Location { get; set; }
+
+
     }
 }

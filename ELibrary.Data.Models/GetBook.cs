@@ -9,13 +9,14 @@ namespace ELibrary.Data.Models
         public GetBook()
         {
             this.CreatOn = DateTime.UtcNow;
+            this.Books = new List<Book>();
         }
 
         public int Id { get; set; }
 
         public int UserId { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public User Users { get; set; }
 
         public int BookId { get; set; }
 

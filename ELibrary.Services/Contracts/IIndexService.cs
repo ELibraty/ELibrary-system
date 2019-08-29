@@ -6,7 +6,7 @@ namespace ELibrary.Services.Contracts
 {
     public interface IIndexService
     {
-        int SingUp(string UserName, string Password, string Email, string Type, string Avatar);
+        string SingUp(string UserName, string Password, string Email, string Type, string Avatar);
 
 //        bool SingIn(string Password, string Email);
 

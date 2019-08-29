@@ -19,13 +19,13 @@ namespace ELibrary.Data.Models
 
         public string GenreId { get; set; }
         
-        public ICollection<Genre> Genres { get; set; }
+        public Genre Genres { get; set; }
 
         public string BookCode { get; set; }
 
         public int UserId { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public User Users { get; set; }
 
         public DateTime CreatOn { get; set; }
 

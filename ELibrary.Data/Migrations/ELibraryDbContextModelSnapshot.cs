@@ -31,7 +31,11 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UsersId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("Admin");
                 });
@@ -54,13 +58,21 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<string>("GenreId");
 
+                    b.Property<int?>("GenresId");
+
                     b.Property<int?>("GetBookId");
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UsersId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("GenresId");
+
                     b.HasIndex("GetBookId");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("Books");
                 });
@@ -71,13 +83,9 @@ namespace ELibrary.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookId");
-
                     b.Property<string>("GenreName");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BookId");
 
                     b.ToTable("Genres");
                 });
@@ -96,7 +104,11 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UsersId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("GetBooks");
                 });
@@ -113,7 +125,11 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UsersId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("Library");
                 });
@@ -130,91 +146,274 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<int>("UserId");
 
+                    b.Property<string>("UserId1");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Person");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AdminId");
+                    b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("Avatar");
 
-                    b.Property<int?>("BookId");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
                     b.Property<DateTime>("CreatOn");
 
                     b.Property<DateTime?>("DeleteDate");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .HasMaxLength(256);
 
-                    b.Property<int?>("GetBookId");
+                    b.Property<bool>("EmailConfirmed");
 
-                    b.Property<int?>("LibraryId");
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
 
                     b.Property<string>("Password");
 
-                    b.Property<int?>("PersonId");
+                    b.Property<string>("PasswordHash");
 
-                    b.Property<string>("Type");
+                    b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("UserName");
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdminId");
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("GetBookId");
+                    b.ToTable("AspNetUsers");
+                });
 
-                    b.HasIndex("LibraryId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.HasIndex("PersonId");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
-                    b.ToTable("Users");
+                    b.Property<string>("Name")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("ProviderKey")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("ProviderDisplayName");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("RoleId");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("ELibrary.Data.Models.Admin", b =>
+                {
+                    b.HasOne("ELibrary.Data.Models.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Book", b =>
                 {
+                    b.HasOne("ELibrary.Data.Models.Genre", "Genres")
+                        .WithMany("Books")
+                        .HasForeignKey("GenresId");
+
                     b.HasOne("ELibrary.Data.Models.GetBook")
                         .WithMany("Books")
                         .HasForeignKey("GetBookId");
+
+                    b.HasOne("ELibrary.Data.Models.User", "Users")
+                        .WithMany("AddedBooks")
+                        .HasForeignKey("UsersId");
                 });
 
-            modelBuilder.Entity("ELibrary.Data.Models.Genre", b =>
+            modelBuilder.Entity("ELibrary.Data.Models.GetBook", b =>
                 {
-                    b.HasOne("ELibrary.Data.Models.Book")
-                        .WithMany("Genres")
-                        .HasForeignKey("BookId");
+                    b.HasOne("ELibrary.Data.Models.User", "Users")
+                        .WithMany("GetBooks")
+                        .HasForeignKey("UsersId");
                 });
 
-            modelBuilder.Entity("ELibrary.Data.Models.User", b =>
+            modelBuilder.Entity("ELibrary.Data.Models.Library", b =>
                 {
-                    b.HasOne("ELibrary.Data.Models.Admin")
-                        .WithMany("Users")
-                        .HasForeignKey("AdminId");
+                    b.HasOne("ELibrary.Data.Models.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
+                });
 
-                    b.HasOne("ELibrary.Data.Models.Book")
-                        .WithMany("Users")
-                        .HasForeignKey("BookId");
+            modelBuilder.Entity("ELibrary.Data.Models.Person", b =>
+                {
+                    b.HasOne("ELibrary.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+                });
 
-                    b.HasOne("ELibrary.Data.Models.GetBook")
-                        .WithMany("Users")
-                        .HasForeignKey("GetBookId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("ELibrary.Data.Models.Library")
-                        .WithMany("Users")
-                        .HasForeignKey("LibraryId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("ELibrary.Data.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("ELibrary.Data.Models.Person")
-                        .WithMany("User")
-                        .HasForeignKey("PersonId");
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("ELibrary.Data.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ELibrary.Data.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("ELibrary.Data.Models.User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

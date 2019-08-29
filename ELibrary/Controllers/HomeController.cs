@@ -29,5 +29,10 @@ namespace ELibrary.Controllers
             this.service.SingUp(UserName,  Password,  Email,  Type,  Avatar);
             return this.RedirectToAction("Index", "Home");
         }
+
+        public IActionResult IndexORG()
+        {
+            return View();
+        }
     }
 }

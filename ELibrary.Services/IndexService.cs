@@ -18,7 +18,7 @@ namespace ELibrary.Services
             this.context = context;
         }
 
-        public int SingUp(string userName, string password, string email, string type, string avatar)
+        public string SingUp(string userName, string password, string email, string type, string avatar)
         {
             using (MD5 md5Hash = MD5.Create())
             {
@@ -29,7 +29,7 @@ namespace ELibrary.Services
                 UserName = userName,
                 Password = password,
                 Email = email,
-                Type = type,
+                //Type = type,
                 Avatar = avatar
             };
 
