@@ -21,30 +21,26 @@ namespace ELibrary.Data.Migrations
 
             modelBuilder.Entity("ELibrary.Data.Models.Admin", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UsersId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Admin");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Book", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author");
 
@@ -58,30 +54,25 @@ namespace ELibrary.Data.Migrations
 
                     b.Property<string>("GenreId");
 
-                    b.Property<int?>("GenresId");
+                    b.Property<string>("GetBookId");
 
-                    b.Property<int?>("GetBookId");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UsersId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenresId");
+                    b.HasIndex("GenreId");
 
                     b.HasIndex("GetBookId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Books");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Genre", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("GenreName");
 
@@ -92,65 +83,56 @@ namespace ELibrary.Data.Migrations
 
             modelBuilder.Entity("ELibrary.Data.Models.GetBook", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BookId");
+                    b.Property<string>("BookId");
 
                     b.Property<DateTime>("CreatOn");
 
                     b.Property<DateTime?>("ReturnDate");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UsersId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("GetBooks");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Library", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Location");
 
                     b.Property<string>("NameLibrary");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UsersId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Library");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Person", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Person");
                 });
@@ -197,6 +179,8 @@ namespace ELibrary.Data.Migrations
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("Type");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
@@ -280,11 +264,9 @@ namespace ELibrary.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -315,11 +297,9 @@ namespace ELibrary.Data.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -332,14 +312,14 @@ namespace ELibrary.Data.Migrations
                 {
                     b.HasOne("ELibrary.Data.Models.User", "Users")
                         .WithMany()
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Book", b =>
                 {
                     b.HasOne("ELibrary.Data.Models.Genre", "Genres")
                         .WithMany("Books")
-                        .HasForeignKey("GenresId");
+                        .HasForeignKey("GenreId");
 
                     b.HasOne("ELibrary.Data.Models.GetBook")
                         .WithMany("Books")
@@ -347,28 +327,28 @@ namespace ELibrary.Data.Migrations
 
                     b.HasOne("ELibrary.Data.Models.User", "Users")
                         .WithMany("AddedBooks")
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.GetBook", b =>
                 {
                     b.HasOne("ELibrary.Data.Models.User", "Users")
                         .WithMany("GetBooks")
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Library", b =>
                 {
                     b.HasOne("ELibrary.Data.Models.User", "Users")
                         .WithMany()
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ELibrary.Data.Models.Person", b =>
                 {
                     b.HasOne("ELibrary.Data.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

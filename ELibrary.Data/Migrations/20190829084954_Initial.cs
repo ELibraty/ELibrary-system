@@ -42,6 +42,7 @@ namespace ELibrary.Data.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Password = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
                     Avatar = table.Column<string>(nullable: true),
                     CreatOn = table.Column<DateTime>(nullable: false),
                     DeleteDate = table.Column<DateTime>(nullable: true)
@@ -55,8 +56,7 @@ namespace ELibrary.Data.Migrations
                 name: "Genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     GenreName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -89,10 +89,8 @@ namespace ELibrary.Data.Migrations
                 name: "Admin",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    UsersId = table.Column<string>(nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true)
                 },
@@ -100,8 +98,8 @@ namespace ELibrary.Data.Migrations
                 {
                     table.PrimaryKey("PK_Admin", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Admin_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_Admin_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -132,8 +130,8 @@ namespace ELibrary.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -177,8 +175,8 @@ namespace ELibrary.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -196,11 +194,9 @@ namespace ELibrary.Data.Migrations
                 name: "GetBooks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    UsersId = table.Column<string>(nullable: true),
-                    BookId = table.Column<int>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    BookId = table.Column<string>(nullable: true),
                     CreatOn = table.Column<DateTime>(nullable: false),
                     ReturnDate = table.Column<DateTime>(nullable: true)
                 },
@@ -208,8 +204,8 @@ namespace ELibrary.Data.Migrations
                 {
                     table.PrimaryKey("PK_GetBooks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_GetBooks_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_GetBooks_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -219,10 +215,8 @@ namespace ELibrary.Data.Migrations
                 name: "Library",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    UsersId = table.Column<string>(nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     NameLibrary = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true)
                 },
@@ -230,8 +224,8 @@ namespace ELibrary.Data.Migrations
                 {
                     table.PrimaryKey("PK_Library", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Library_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_Library_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -241,10 +235,8 @@ namespace ELibrary.Data.Migrations
                 name: "Person",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true)
                 },
@@ -252,8 +244,8 @@ namespace ELibrary.Data.Migrations
                 {
                     table.PrimaryKey("PK_Person", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Person_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Person_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -263,25 +255,22 @@ namespace ELibrary.Data.Migrations
                 name: "Books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     BookName = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
                     GenreId = table.Column<string>(nullable: true),
-                    GenresId = table.Column<int>(nullable: true),
                     BookCode = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    UsersId = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     CreatOn = table.Column<DateTime>(nullable: false),
                     DeleteDate = table.Column<DateTime>(nullable: true),
-                    GetBookId = table.Column<int>(nullable: true)
+                    GetBookId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Books_Genres_GenresId",
-                        column: x => x.GenresId,
+                        name: "FK_Books_Genres_GenreId",
+                        column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -292,17 +281,17 @@ namespace ELibrary.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Books_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_Books_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Admin_UsersId",
+                name: "IX_Admin_UserId",
                 table: "Admin",
-                column: "UsersId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -344,9 +333,9 @@ namespace ELibrary.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_GenresId",
+                name: "IX_Books_GenreId",
                 table: "Books",
-                column: "GenresId");
+                column: "GenreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_GetBookId",
@@ -354,24 +343,24 @@ namespace ELibrary.Data.Migrations
                 column: "GetBookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_UsersId",
+                name: "IX_Books_UserId",
                 table: "Books",
-                column: "UsersId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GetBooks_UsersId",
+                name: "IX_GetBooks_UserId",
                 table: "GetBooks",
-                column: "UsersId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Library_UsersId",
+                name: "IX_Library_UserId",
                 table: "Library",
-                column: "UsersId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Person_UserId1",
+                name: "IX_Person_UserId",
                 table: "Person",
-                column: "UserId1");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using ELibrary.ViewModels;
+
 namespace ELibrary.Controllers
 {
     public class HomeController:Controller
@@ -22,11 +24,13 @@ namespace ELibrary.Controllers
         }
 
 
+        // public IActionResult Index(string UserNameSingIn, string PasswordSingIn, string UserNameSingUp, string PasswordSingUp, string EmailSingUp)
         [HttpPost]
-        public IActionResult Index(string UserName, string Password, string Email)
+        public IActionResult Index(IndexViewModel.SingInModel singInModel, IndexViewModel.SingUpModel singUp)
         {
-            string Type = "user", Avatar = "";
-            this.service.SingUp(UserName,  Password,  Email,  Type,  Avatar);
+            string Avatar = "";
+            this.service.SingIn(singInModel.UserNameSingIn, singInModel.PasswordSingIn);
+            this.service.SingUp(singUp.UserNameSingUp, singUp.PasswordSingUp, singUp.EmailSingUp,  Avatar);
             return this.RedirectToAction("Index", "Home");
         }
 

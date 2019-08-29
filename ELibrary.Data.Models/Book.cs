@@ -11,7 +11,7 @@ namespace ELibrary.Data.Models
             this.CreatOn = DateTime.UtcNow;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string BookName { get; set; }
 
@@ -23,7 +23,7 @@ namespace ELibrary.Data.Models
 
         public string BookCode { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public User Users { get; set; }
 

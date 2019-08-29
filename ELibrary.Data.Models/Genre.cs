@@ -10,7 +10,7 @@ namespace ELibrary.Data.Models
             this.Books = new List<Book>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string GenreName { get; set; }
 

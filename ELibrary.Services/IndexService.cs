@@ -18,19 +18,19 @@ namespace ELibrary.Services
             this.context = context;
         }
 
-        public string SingUp(string userName, string password, string email, string type, string avatar)
+        public string SingUp(string UserName, string Password, string Email, string Avatar)
         {
             using (MD5 md5Hash = MD5.Create())
             {
-                password = GetMd5Hash(md5Hash, password);
+                Password = GetMd5Hash(md5Hash, Password);
             }
             var user = new User()
             {
-                UserName = userName,
-                Password = password,
-                Email = email,
+                UserName = UserName,
+                Password = Password,
+                Email = Email,
                 //Type = type,
-                Avatar = avatar
+                Avatar = Avatar
             };
 
             context.Users.Add(user);
@@ -39,11 +39,16 @@ namespace ELibrary.Services
             return user.Id;
         }
 
-         public bool SingIn(string Email, string Password)
+         public string SingIn(string userName, string password)
          {
-             var user = this.context.Users.FirstOrDefault(x => x.Email == Email && x.Password == Password);
-             if (user != null) return true;
-             else return false;  
+            using (MD5 md5Hash = MD5.Create())
+            {
+                password = GetMd5Hash(md5Hash, password);
+            }
+            var user = this.context.Users.FirstOrDefault(x => x.UserName == userName && x.Password == password);
+        
+            if (user != null) return "";
+            else return "Admin";  
          }
 
         //do pass to MD5
